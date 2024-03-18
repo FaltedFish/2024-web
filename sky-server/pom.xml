@@ -115,6 +115,12 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.7</version> <!-- 或者适合您项目的其他版本 -->
+        </dependency>
+
     </dependencies>
 
     <build>
