@@ -5,9 +5,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "sky.alioss")
+@ConfigurationProperties(prefix = "sky.hwobs")
 @Data
-public class AliOssProperties {
+public class HwObsProperties {
 
     private String endpoint;
     private String accessKeyId;

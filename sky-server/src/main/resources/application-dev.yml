@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: 020908
+  hwobs:
+    bucket-name: sky-takeout
+    access-key-id: 9X7XLHP3TUKWU5TOJM2X
+    access-key-secret: OxCvdlCj4vwp9mXMdBTqw4ncU7WGUHrra9z1YSzv
+    endpoint: obs.cn-north-4.myhuaweicloud.com
