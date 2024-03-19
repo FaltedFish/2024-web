@@ -24,7 +24,6 @@ public class HwObsUtil {
      * @param objectName
      * @return
      */
-    //TODO look look
     public String upload(byte[] bytes, String objectName) {
 
         // 创建OSSClient实例。
