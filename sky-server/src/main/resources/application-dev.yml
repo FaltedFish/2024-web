@@ -11,3 +11,11 @@ sky:
     access-key-id: 9X7XLHP3TUKWU5TOJM2X
     access-key-secret: OxCvdlCj4vwp9mXMdBTqw4ncU7WGUHrra9z1YSzv
     endpoint: obs.cn-north-4.myhuaweicloud.com
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 0
+  wechat:
+    appid: wxc8295b93d6912e18
+    secret: 5fd0e544893c4d0a7df38a8bc56d7f32
