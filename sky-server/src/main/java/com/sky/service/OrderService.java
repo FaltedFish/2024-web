@@ -93,4 +93,6 @@ public interface OrderService {
      * @return
      */
     PageResult conditionSearch(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    void reminder(Long id);
 }
