@@ -6,8 +6,8 @@
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into user
-        (openid, name, phone, sex, id_number, avatar, create_time)
-        values (#{openid}, #{name}, #{phone}, #{sex}, #{idNumber}, #{avatar}, #{createTime})
+        (openid, name, phone, sex, id_number, avatar, create_time, amount)
+        values (#{openid}, #{name}, #{phone}, #{sex}, #{idNumber}, #{avatar}, #{createTime}, #{amount})
     </insert>
 
     <select id="countByMap" resultType="java.lang.Integer">

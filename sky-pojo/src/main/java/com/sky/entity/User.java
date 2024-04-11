@@ -34,6 +34,9 @@ public class User implements Serializable {
     //身份证号
     private String idNumber;
 
+    //账户余额
+    private String amount;
+
     //头像
     private String avatar;
 

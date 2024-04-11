@@ -1,10 +1,11 @@
 package com.sky.mapper;
 
-import com.sky.dto.UserLoginDTO;
 import com.sky.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 @Mapper
@@ -22,5 +23,10 @@ public interface UserMapper {
     @Select("select * from user where id = #{userId}")
     User getById(Long userId);
 
+
+
     Integer countByMap(Map map);
+
+    @Update("update user set amount=#{newBalance} where id=#{userId}")
+    void setAmount(Long userId, BigDecimal newBalance);
 }
