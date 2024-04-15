@@ -4,6 +4,7 @@ import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
+import com.sky.dto.PasswordEditDTO;
 import com.sky.entity.Employee;
 import com.sky.properties.JwtProperties;
 import com.sky.result.PageResult;
@@ -63,6 +64,17 @@ public class EmployeeController {
         return Result.success(employeeLoginVO);
     }
 
+/*
+    @PutMapping("/editPassword")
+    @ApiOperation("修改密码")
+    public Result editPassword(@RequestBody PasswordEditDTO passwordEditDTO){
+        boolean editSuccess = employeeService.editPassword(passwordEditDTO);
+        if(editSuccess)
+            return Result.success();
+        else
+            return Result.error("原密码不正确");
+    }*/
+
     /**
      * 退出
      *
@@ -73,12 +85,12 @@ public class EmployeeController {
     public Result<String> logout() {
         return Result.success();
     }
-
-    /**
+/*
+    *//**
      * 新增员工
      * @param employeeDTO
      * @return
-     */
+     *//*
     @PostMapping("")
     @ApiOperation("新增员工")
     public Result<String> save(@RequestBody EmployeeDTO employeeDTO){
@@ -87,11 +99,11 @@ public class EmployeeController {
         return Result.success();
     }
 
-    /**
+    *//**
      * 员工分页查询
      * @param employeePageQueryDTO
      * @return
-     */
+     *//*
     @GetMapping("/page")
     @ApiOperation("员工分页查询")
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
@@ -100,12 +112,12 @@ public class EmployeeController {
         return Result.success(pageResult);
     }
 
-    /**
+    *//**
      * 启用禁用员工账号
      * @param status
      * @param id
      * @return
-     */
+     *//*
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用员工账号")
     public Result startOrStop(@PathVariable Integer status,Long id){
@@ -128,5 +140,5 @@ public class EmployeeController {
         log.info("编辑员工信息");
         employeeService.update(employeeDTO);
         return Result.success();
-    }
+    }*/
 }

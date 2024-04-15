@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class JwtUtil {
@@ -26,9 +27,14 @@ public class JwtUtil {
         long expMillis = System.currentTimeMillis() + ttlMillis;
         Date exp = new Date(expMillis);
 
+        //设置头部
+        Map<String, Object> map = new HashMap<>();
+        map.put("alg", "HS256");
+        map.put("typ", "JWT");
         // 设置jwt的body
         JwtBuilder builder = Jwts.builder()
-                // 如果有私有声明，一定要先设置这个自己创建的私有的声明，这个是给builder的claim赋值，一旦写在标准的声明赋值之后，就是覆盖了那些标准的声明的
+                .setHeader(map)
+                // 设置内容，这里保存的是emp或admin的id
                 .setClaims(claims)
                 // 设置签名使用的签名算法和签名使用的秘钥
                 .signWith(signatureAlgorithm, secretKey.getBytes(StandardCharsets.UTF_8))
