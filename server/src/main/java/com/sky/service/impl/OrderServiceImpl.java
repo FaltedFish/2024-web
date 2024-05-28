@@ -50,6 +50,8 @@ public class OrderServiceImpl implements OrderService {
     private WeChatPayUtil weChatPayUtil;
     @Autowired
     private WebSocketServer webSocketServer;
+    @Autowired
+    private DishMapper dishMapper;
 
     private Orders orders;
     @Override
@@ -60,12 +62,24 @@ public class OrderServiceImpl implements OrderService {
         if (addressBook == null){
             throw new AddressBookBusinessException(MessageConstant.ADDRESS_BOOK_IS_NULL);
         }
+
         ShoppingCart shoppingCart = new ShoppingCart();
         Long userId = BaseContext.getCurrentId();
         shoppingCart.setUserId(userId);
         List<ShoppingCart> shoppingCartList = shoppingCartMapper.list(shoppingCart);
         if(shoppingCartList == null || shoppingCartList.isEmpty()){
             throw new ShoppingCartBusinessException(MessageConstant.SHOPPING_CART_IS_NULL);
+        }
+        for(ShoppingCart cart:shoppingCartList){
+            Integer inventory = dishMapper.getInventoryById(cart.getDishId());
+            if(inventory<cart.getNumber()){
+                throw new ShoppingCartBusinessException(MessageConstant.INVENTORY_NOT_ENOUGH);
+            }else {
+                Dish dish = new Dish();
+                dish.setInventory(inventory-cart.getNumber());
+                dish.setId(cart.getDishId());
+                dishMapper.update(dish);
+            }
         }
         //向订单表添加一条数据
         orders = new Orders();
@@ -126,7 +140,7 @@ public class OrderServiceImpl implements OrderService {
         /*JSONObject jsonObject = weChatPayUtil.pay(
                 ordersPaymentDTO.getOrderNumber(), //商户订单号
                 new BigDecimal(0.01), //支付金额，单位 元
-                "苍穹外卖订单", //商品描述
+                "订单", //商品描述
                 user.getOpenid() //微信用户的openid
         );
 

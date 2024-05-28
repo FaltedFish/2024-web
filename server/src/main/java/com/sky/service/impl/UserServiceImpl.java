@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
             user = User.builder()
                     .openid(openid)
                     .createTime(LocalDateTime.now())
+                    .amount(new BigDecimal(5000))
                     .build();
             userMapper.insert(user);
         }

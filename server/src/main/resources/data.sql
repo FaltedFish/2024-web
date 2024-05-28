@@ -59,6 +59,7 @@ CREATE TABLE `dish` (
                         `update_time` datetime DEFAULT NULL COMMENT '更新时间',
                         `create_user` bigint DEFAULT NULL COMMENT '创建人',
                         `update_user` bigint DEFAULT NULL COMMENT '修改人',
+                        `inventory` int DEFAULT 0 COMMENT '库存',
                         PRIMARY KEY (`id`),
                         UNIQUE KEY `idx_dish_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='菜品';
@@ -237,6 +238,7 @@ CREATE TABLE `user` (
                         `sex` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '性别',
                         `id_number` varchar(18) COLLATE utf8_bin DEFAULT NULL COMMENT '身份证号',
                         `avatar` varchar(500) COLLATE utf8_bin DEFAULT NULL COMMENT '头像',
+                        `amount` DECIMAL(7,2) DEFAULT 5000 COMMENT '金额',
                         `create_time` datetime DEFAULT NULL,
                         PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='用户信息';

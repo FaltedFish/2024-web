@@ -41,6 +41,7 @@ public class SetmealController {
         PageResult pageResult = setmealService.pageQuery(setmealPageQueryDTO);
         return Result.success(pageResult);
     }
+
     @DeleteMapping()
     @CacheEvict(cacheNames = "setmealcache" ,allEntries = true)
     @ApiOperation("删除套餐")

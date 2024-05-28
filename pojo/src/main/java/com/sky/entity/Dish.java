@@ -46,5 +46,6 @@ public class Dish implements Serializable {
     private Long createUser;
 
     private Long updateUser;
+    private Integer inventory;
 
 }
