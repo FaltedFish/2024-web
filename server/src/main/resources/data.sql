@@ -229,6 +229,12 @@ CREATE TABLE `shopping_cart` (
                                  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='购物车';
 
+CREATE TABLE `review`(
+    `id` bigint PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+    `order_id` bigint NOT NULL COMMENT '订单号',
+    `rating` bool NOT NULL COMMENT '好评/差评',
+    `review_text` varchar(300) COMMENT '具体评价'
+);
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
                         `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
