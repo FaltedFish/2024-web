@@ -49,7 +49,7 @@ public class Orders implements Serializable {
     private Long userId;
 
     //地址id
-    private Long addressBookId;
+    private Long tableId;
 
     //下单时间
     private LocalDateTime orderTime;
@@ -90,10 +90,10 @@ public class Orders implements Serializable {
     //订单取消时间
     private LocalDateTime cancelTime;
 
-    //预计送达时间
+    //预计完成时间
     private LocalDateTime estimatedDeliveryTime;
 
-    //配送状态  1立即送出  0选择具体时间
+    //取餐状态  1立即取餐  0选择具体时间
     private Integer deliveryStatus;
 
     //送达时间

@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface AddressBookService {
 
-    List<AddressBook> list(AddressBook addressBook);
+    /*List<AddressBook> list(AddressBook addressBook);
 
     void save(AddressBook addressBook);
 
@@ -16,5 +16,5 @@ public interface AddressBookService {
     void setDefault(AddressBook addressBook);
 
     void deleteById(Long id);
-
+*/
 }

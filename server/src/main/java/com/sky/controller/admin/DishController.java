@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +57,14 @@ public class DishController {
         dishService.deleteBatch(ids);
 
         //清理缓存数据
+        cleanCache("dish_*");
+        return Result.success();
+    }
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("菜品起售、停售")
+    public Result startOrStop(@PathVariable Integer status,Long id){
+        dishService.startOrStop(status, id);
         cleanCache("dish_*");
         return Result.success();
     }

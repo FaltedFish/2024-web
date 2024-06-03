@@ -42,8 +42,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailMapper orderDetailMapper;
     @Autowired
     private ShoppingCartMapper shoppingCartMapper;
-    @Autowired
-    private AddressBookMapper addressBookMapper;
+    /*@Autowired
+    private AddressBookMapper addressBookMapper;*/
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -58,10 +58,10 @@ public class OrderServiceImpl implements OrderService {
     public OrderSubmitVO submit(OrdersSubmitDTO ordersSubmitDTO) {
 
         //业务异常处理（地址表或购物车为空）
-        AddressBook addressBook = addressBookMapper.getById(ordersSubmitDTO.getAddressBookId());
-        if (addressBook == null){
+        //AddressBook addressBook = addressBookMapper.getById(ordersSubmitDTO.getAddressBookId());
+        /*if (addressBook == null){
             throw new AddressBookBusinessException(MessageConstant.ADDRESS_BOOK_IS_NULL);
-        }
+        }*/
 
         ShoppingCart shoppingCart = new ShoppingCart();
         Long userId = BaseContext.getCurrentId();
@@ -82,15 +82,17 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         //向订单表添加一条数据
+        User user = userMapper.getById(userId);
         orders = new Orders();
         BeanUtils.copyProperties(ordersSubmitDTO,orders);
         orders.setOrderTime(LocalDateTime.now());
+        orders.setTableId(ordersSubmitDTO.getAddressBookId());
         orders.setPayStatus(Orders.UN_PAID);
         orders.setStatus(Orders.PENDING_PAYMENT);
-        orders.setAddress(addressBook.getDetail());
+        orders.setAddress(ordersSubmitDTO.getAddressBookId().toString());
         orders.setNumber(String.valueOf(System.currentTimeMillis()));
-        orders.setPhone(addressBook.getPhone());
-        orders.setConsignee(addressBook.getConsignee());
+        orders.setPhone(user.getPhone());
+        orders.setConsignee(user.getName());
         orders.setUserId(userId);
 
         orderMapper.insert(orders);

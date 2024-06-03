@@ -4,7 +4,7 @@ import com.sky.entity.AddressBook;
 import org.apache.ibatis.annotations.*;
 import java.util.List;
 
-@Mapper
+//@Mapper
 public interface AddressBookMapper {
 
     /**
